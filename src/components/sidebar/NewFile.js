@@ -1,59 +1,26 @@
 import React from 'react'
 import AddIcon from '@mui/icons-material/Add';
 import '../../styles/newFile.css';
-import { useState } from 'react';
-
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
-
+import { useRef } from 'react'
 
 //import app from '../../Firebase';
 //import {storage, db} from '../../Firebase';
 
 
-
-
 const NewFile = () => {
 
-  const [open, setOpen] = useState(false);
-  const HandleOpen = () => setOpen(true);
-  const HandleClose = () => setOpen(false);
-
-  const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
+  const onButtonClick = () => {
+   inputFile.current.click();
   };
+
+  const inputFile = useRef(null)
 
   return (
 
     <div className='NewFile'>
 
-      <Modal
-        open={open}
-        onClose={HandleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-        </Box>
-      </Modal>
-
-        <div className='newFile_Container' onClick={HandleOpen}>
+        <div className='newFile_Container' onClick={onButtonClick}>
+            <input type='file' id='file' ref={inputFile} style={{display: 'none'}}/>
             <p>Add File</p>
             <AddIcon sx={{ fontSize: 20, color: 'white', margin: '20px' }}/>
         </div>
