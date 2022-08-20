@@ -22,6 +22,9 @@
 .tdSize{
     width: 5%;
 }
+.tdDownload{
+    width: 4%;
+}
 .tdModify, .tdAutor{
     width: 10%;
 }
@@ -29,6 +32,6 @@
 .tdName{
     height: 100%;
     display: flex;
-    width: 75%;
+    width: 71%;
     text-align: left;
 }

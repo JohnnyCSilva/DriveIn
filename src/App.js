@@ -9,17 +9,25 @@ import facebook_icon from './media/facebook.png';
 import google_icon from './media/google.png';
 import twitter_icon from './media/twitter.png';
 import mainLogo from './media/logo_login.png';
+import image_login from './media/cloud.gif';
 
 
 function App() {
 
   const [user, setUser] = useState(null);
 
-  const handleLogin=() => {
+  const handleLogin = () => {
     if (!user) {
-      auth.signInWithPopup(provider).then(result => {
-        setUser(result.user);
-      })
+      auth.signInWithPopup(provider).then((result) => {
+        setUser(result.user)
+        console.log(result.user)
+      }).catch((error) => {
+        alert(error.message);
+      });
+    } else if (user) {
+      auth.signOut().then(() => {
+        setUser(null)
+      }).catch((err) => alert(err.message))
     }
   }
 
@@ -38,7 +46,7 @@ function App() {
           <>  
             <div className='main_login'>
               <div className='login_left'>
-                <img src='' alt='image_left'></img>
+                <img src={image_login} alt='image_left'></img>
               </div>
               <div className='login_right'>
                 <div className='logo_main'>

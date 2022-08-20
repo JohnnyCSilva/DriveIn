@@ -28,7 +28,7 @@ const index = ({ userPhoto }) =>{
                 <SettingsIcon sx={{ fontSize: 20, color: '#A0A5BA', margin: '5px' }}/>
             </span>
 
-            <img src={userPhoto} alt="User Photo"/>
+            <img src={userPhoto} alt=''/>
         </div>
 
     </div>

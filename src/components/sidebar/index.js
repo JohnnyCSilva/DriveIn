@@ -8,6 +8,9 @@ import MonitorIcon from '@mui/icons-material/Monitor';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import CloudQueueIcon from '@mui/icons-material/CloudQueue';
+
+import  ViewFiles  from '../filesView/ViewFiles.js';
 
 const index = () => {
   
@@ -24,6 +27,10 @@ const index = () => {
             <SidebarItem icon={(<AccessTimeIcon  sx={{ fontSize: 20, color: '#A0A5BA', margin: '5px' }}/> )} label={'Recent'} />
             <SidebarItem icon={(<StarBorderIcon  sx={{ fontSize: 20, color: '#A0A5BA', margin: '5px' }}/> )} label={'Stared'} />
             <SidebarItem icon={(<DeleteOutlineIcon  sx={{ fontSize: 20, color: '#A0A5BA', margin: '5px' }}/> )} label={'Deleted'} />
+            <hr/>
+            <SidebarItem icon={(<CloudQueueIcon  sx={{ fontSize: 20, color: '#A0A5BA', margin: '5px' }}/> )} label={'Storage'} />
+
+            {/*<p>{totalSize}</p>*/}
         
         </div>
 

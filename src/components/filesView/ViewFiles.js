@@ -22,6 +22,9 @@ const ViewFiles = () => {
     }, [])
 
     console.log(files)
+
+    const totalSize = files.reduce((acc, cur) => acc + cur.item.size, 0)
+    console.log(totalSize)
             
 
   return (
@@ -31,12 +34,15 @@ const ViewFiles = () => {
         </div>
         
         <table className='tableTop'>
+            <tbody>
             <tr>
                 <td className='tdName'>File Name</td>
                 <td className='tdAutor'>Autor</td>
                 <td className='tdModify'>Last Modified</td>
                 <td className='tdSize'>File Size</td>
+                <td className='tdDownload'></td>
             </tr>
+            </tbody>
         </table>
 
         {
@@ -44,10 +50,14 @@ const ViewFiles = () => {
                 <FileItem key={id} id={id} caption={item.caption} timestamp={item.timestamp} fileUrl={item.fileUrl} size={item.size} />
             ))
         }
+
+        
+
     </div>
 
 
   )
 }
+
 
 export default ViewFiles

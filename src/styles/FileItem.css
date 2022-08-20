@@ -34,11 +34,11 @@
     
 }
 
-.tableMain>tr>td:hover{
+.tableMain>tbody>tr>td:hover{
     color: rgba(0,0,0,.70);
 }
 
-.tableMain>tr>td{
+.tableMain>tbody>tr>td{
     transition: 0.2s ease-in-out;
     align-items: center;
     height: 50px;

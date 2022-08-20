@@ -1,6 +1,7 @@
 import React from 'react'
 import ImageIcon from '@mui/icons-material/Image';
 import '../../styles/FileItem.css'
+import DownloadIcon from '@mui/icons-material/Download';
 
 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -17,27 +18,21 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
 
         return Math.max(fileSizeInBytes, 0.1).toFixed(1) + byteUnits[i];
     };
+
+
     return (
         <div className='fileItem'>
-            <a href={fileUrl} download target='_blank'>
-                {/*<div className='fileItem-left'>
-                    <ImageIcon />
-                    <p>{caption}</p>
-                </div>
-                <div className='fileItem-middle'>
-                    <p>Autor</p>
-                </div>
-                <div className='fileItem-right'>
-                    <p>{fileDate}</p>
-                    <p>{getReadableFileSizeString(size)}</p>
-                </div>  */}
+            <a href={fileUrl} download target='_blank' rel='noreferrer'>
                 <table className='tableMain'>
+                    <tbody>
                     <tr>
                         <td className='tdName'><ImageIcon /><p>{caption}</p></td>
                         <td className='tdAutor'><p>Autor</p></td>
                         <td className='tdModify'><p>{fileDate}</p></td>
                         <td className='tdSize'><p>{getReadableFileSizeString(size)}</p></td>
+                        <td className='tdDownload'><DownloadIcon sx={{ fontSize: 15, color: '#A0A5BA' }}/></td>
                     </tr>    
+                    </tbody>
                 </table>             
             </a>
         </div>
