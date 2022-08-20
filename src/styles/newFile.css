@@ -26,3 +26,36 @@
     cursor: pointer;
 }
 
+/*.loader_before{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #bfbfbf;
+    opacity: 1;
+    animation: fadeout 5s ease-in-out;
+}
+
+.loader{
+    top:50%;
+    left:50%;
+    transform: translate(-70%, -70%);
+    position: absolute;
+    border: 10px solid #f3f3f3;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border-top: 10px solid #742BDE;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+@keyframes fadeout {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}*/

@@ -7,7 +7,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import SettingsIcon from '@mui/icons-material/Settings';
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
 
-const index = () => {
+const index = ({ userPhoto }) =>{
   return (
     <div className='header'>
 
@@ -28,7 +28,7 @@ const index = () => {
                 <SettingsIcon sx={{ fontSize: 20, color: '#A0A5BA', margin: '5px' }}/>
             </span>
 
-            <img src='' alt='User'/>
+            <img src={userPhoto} alt='User'/>
         </div>
 
     </div>
