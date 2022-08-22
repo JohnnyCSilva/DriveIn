@@ -1,7 +1,9 @@
 import React from 'react'
 import '../../styles/sidebarItem.css';
 
-const sidebarItem = ({icon, label}) => {
+
+const SidebarItem = ({icon, label}) => {
+
   return (
     <div className='sidebarItem'>
 
@@ -16,4 +18,4 @@ const sidebarItem = ({icon, label}) => {
   )
 }
 
-export default sidebarItem
+export default SidebarItem

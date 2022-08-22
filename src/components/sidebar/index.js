@@ -1,6 +1,6 @@
 import React from 'react'
 import NewFile from './NewFile';
-import SidebarItem from './sidebarItem';
+import SidebarItem from './SidebarItem';
 import '../../styles/Sidebar.css';
 
 import PieChartOutlineIcon from '@mui/icons-material/PieChartOutline';
@@ -10,7 +10,8 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import CloudQueueIcon from '@mui/icons-material/CloudQueue';
 
-import  ViewFiles  from '../filesView/ViewFiles.js';
+import TotalFileSize from './TotalFileSize.js';
+
 
 const index = () => {
   
@@ -29,8 +30,7 @@ const index = () => {
             <SidebarItem icon={(<DeleteOutlineIcon  sx={{ fontSize: 20, color: '#A0A5BA', margin: '5px' }}/> )} label={'Deleted'} />
             <hr/>
             <SidebarItem icon={(<CloudQueueIcon  sx={{ fontSize: 20, color: '#A0A5BA', margin: '5px' }}/> )} label={'Storage'} />
-
-            {/*<p>{totalSize}</p>*/}
+            <p><TotalFileSize totalSize={("33")}/></p>
         
         </div>
 
