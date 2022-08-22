@@ -31,13 +31,13 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
 
         document.body.appendChild(popup);
 
-        /*const btn_download = document.createElement("a");
+        /*const btn_download = document.createElement("download");
 
         btn_download.innerHTML = "Download";
         btn_download.setAttribute('download', `${fileUrl}.txt`);*/
 
         const btn_delete = document.createElement("button");
-        btn_delete.innerHTML = "Delete";
+        btn_delete.innerText = "Delete File";
         btn_delete.onclick = () => {
 
 
@@ -52,22 +52,14 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
             });
 
             //delete file from db
-            db.collection("files").doc(id).delete().then(function () {
+            db.collection("myFiles").doc(id).delete().then(function () {
                 console.log("apagadated");
             }).catch(function (error) {
                 console.error(error);
             });
 
                 popup.close();
-            }
-
-            // remove file from firestore
-            
-
-
-            
-        
-        
+            }       
 
         const image = document.createElement('img');
 

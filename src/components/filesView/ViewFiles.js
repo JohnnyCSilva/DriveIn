@@ -21,7 +21,7 @@ const ViewFiles = () => {
         })
     }, [])
 
-    console.log(files)
+    
 
     const totalSize = files.reduce((acc, cur) => acc + cur.item.size, 0)
     console.log(totalSize)
@@ -50,8 +50,6 @@ const ViewFiles = () => {
                 <FileItem key={id} id={id} caption={item.caption} timestamp={item.timestamp} fileUrl={item.fileUrl} size={item.size} />
             ))
         }
-
-        
 
     </div>
 
