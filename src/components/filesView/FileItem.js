@@ -4,6 +4,9 @@ import '../../styles/FileItem.css'
 import DownloadIcon from '@mui/icons-material/Download';
 import DescriptionIcon from '@mui/icons-material/Description';
 
+import firebase from 'firebase/compat/app';
+
+
 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
@@ -33,6 +36,39 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
         btn_download.innerHTML = "Download";
         btn_download.setAttribute('download', `${fileUrl}.txt`);*/
 
+        const btn_delete = document.createElement("button");
+        btn_delete.innerHTML = "Delete";
+        btn_delete.onclick = () => {
+
+
+            const fileRef = firebase.storage().refFromURL(fileUrl);
+            const db = firebase.firestore();
+
+            // apaga storage
+            fileRef.delete().then(function () {
+                console.log("apagado");
+            }).catch(function (error) {
+                console.log(error);
+            });
+
+            //delete file from db
+            db.collection("files").doc(id).delete().then(function () {
+                console.log("apagadated");
+            }).catch(function (error) {
+                console.error(error);
+            });
+
+                popup.close();
+            }
+
+            // remove file from firestore
+            
+
+
+            
+        
+        
+
         const image = document.createElement('img');
 
         if (fileUrl.includes('.jpg') || fileUrl.includes('.png') || fileUrl.includes('.jpeg') || fileUrl.includes('.JPEG') || fileUrl.includes('.PNG') || fileUrl.includes('.JPG')) {
@@ -40,6 +76,7 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
             image.setAttribute('alt', 'image');
 
             popup.appendChild(image);
+            popup.appendChild(btn_delete);
             popup.showModal();
 
         } else {
@@ -60,7 +97,10 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
                 popup.close();
             }
         });
-    }   
+        // Apaga ficheiro da base de dados
+        
+    }      
+
 
     // if file = image then show image else show file icon
     const fileIcon = (fileUrl.includes('.jpg') || fileUrl.includes('.png') || fileUrl.includes('.jpeg') || fileUrl.includes('.JPEG') || fileUrl.includes('.PNG') || fileUrl.includes('.JPG')) ? <ImageIcon /> : <DescriptionIcon />;
