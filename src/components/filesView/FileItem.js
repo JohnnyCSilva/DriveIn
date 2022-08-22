@@ -2,10 +2,12 @@ import React from 'react'
 import ImageIcon from '@mui/icons-material/Image';
 import '../../styles/FileItem.css'
 import DownloadIcon from '@mui/icons-material/Download';
+import DescriptionIcon from '@mui/icons-material/Description';
 
 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
+
     const fileDate = `${timestamp?.toDate().getDate()} ${monthNames[timestamp?.toDate().getMonth()]} ${timestamp?.toDate().getFullYear()}`
 
     const getReadableFileSizeString = (fileSizeInBytes) => {
@@ -17,16 +19,60 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
         } while (fileSizeInBytes > 1024);
 
         return Math.max(fileSizeInBytes, 0.1).toFixed(1) + byteUnits[i];
+
     };
+
+    const openFile = () => {
+
+        var popup = document.createElement("dialog");
+
+        document.body.appendChild(popup);
+
+        /*const btn_download = document.createElement("a");
+
+        btn_download.innerHTML = "Download";
+        btn_download.setAttribute('download', `${fileUrl}.txt`);*/
+
+        const image = document.createElement('img');
+
+        if (fileUrl.includes('.jpg') || fileUrl.includes('.png') || fileUrl.includes('.jpeg') || fileUrl.includes('.JPEG') || fileUrl.includes('.PNG') || fileUrl.includes('.JPG')) {
+            image.setAttribute( 'src', fileUrl );
+            image.setAttribute('alt', 'image');
+
+            popup.appendChild(image);
+            popup.showModal();
+
+        } else {
+
+            if (window.confirm("Open File in New Tab?")) {
+                window.open(fileUrl, '_blank');
+            }  else {
+                return;
+            }
+        }        
+
+        
+        //popup.appendChild(btn_download);
+
+        // Fecha quando clicar fora da imagem
+        popup.addEventListener('click', function (e) {
+            if (e.target === popup) {
+                popup.close();
+            }
+        });
+    }   
+
+    // if file = image then show image else show file icon
+    const fileIcon = (fileUrl.includes('.jpg') || fileUrl.includes('.png') || fileUrl.includes('.jpeg') || fileUrl.includes('.JPEG') || fileUrl.includes('.PNG') || fileUrl.includes('.JPG')) ? <ImageIcon /> : <DescriptionIcon />;
 
 
     return (
         <div className='fileItem'>
-            <a href={fileUrl} download target='_blank' rel='noreferrer'>
+            <b onClick={openFile}>
                 <table className='tableMain'>
                     <tbody>
                     <tr>
-                        <td className='tdName'><ImageIcon /><p>{caption}</p></td>
+                        <td className='tdName'>{fileIcon}<p>{caption}</p></td>
                         <td className='tdAutor'><p>Autor</p></td>
                         <td className='tdModify'><p>{fileDate}</p></td>
                         <td className='tdSize'><p>{getReadableFileSizeString(size)}</p></td>
@@ -34,7 +80,7 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
                     </tr>    
                     </tbody>
                 </table>             
-            </a>
+            </b>
         </div>
       )
 }

@@ -17,10 +17,12 @@
     box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
 }
 
-.fileItem>a{
+.fileItem>b{
+    font-weight: normal;
     height: 100%;
     text-decoration: none;
     color: rgba(0,0,0,.54);
+    cursor: pointer;
 }
 
 .tableMain{
@@ -47,3 +49,52 @@
 .tdName>p{
     padding-left: 10px;
 }
+
+dialog{
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: -10;
+    overflow: hidden;
+}
+
+dialog>img{
+    box-shadow: 0px 0px 30px rgba(0,0,0,0.3);   
+    width: auto;
+    height: 70%;
+    border-radius: 5px;
+    animation: fadeInUp 0.5s ease-in-out;
+}
+
+dialog>textarea{
+    box-shadow: 0px 0px 30px rgba(0,0,0,0.3);   
+    width: auto;
+    height: 70%;
+    border-radius: 5px;
+    animation: fadeInUp 0.5s ease-in-out;
+    background-color: white;
+    color: black;
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1; 
+    }
+}
+

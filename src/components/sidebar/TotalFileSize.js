@@ -35,22 +35,24 @@ const TotalFileSize = () => {
         return Math.max(totalSize, 0.1).toFixed(1) + byteUnits[i];
     };
 
-    const progressBarValue = (totalSize) => {
-        let a = -1;
+    /* const progressBarValue = (totalSize) => {
+        let x = -1;
         do{
             totalSize = totalSize / 1024;
-            a++;
+            x++;
 
         }   while (totalSize > 1024);
 
         return Math.max(totalSize, 0.1).toFixed(1);
     }
 
+    console.log(progressBarValue(totalSize)) */
+
 
 
     return (
         <div className='totalSize_main'>
-            <progress id="file" value={progressBarValue(totalSize)} max='10024' className='progress_bar'/>
+            <progress id="file" value={totalSize} max='10000000' className='progress_bar'/>
             <p>{getReadableFileSizeString(totalSize)} of 10 MB used</p>
 
         </div>
