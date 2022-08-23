@@ -4,6 +4,7 @@ import '../../styles/FileItem.css'
 import DownloadIcon from '@mui/icons-material/Download';
 import DescriptionIcon from '@mui/icons-material/Description';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import ArticleIcon from '@mui/icons-material/Article';
 
 import firebase from 'firebase/compat/app';
 
@@ -98,10 +99,12 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
     // if file = image then show image else show file icon
 
     const fileIcon = () => {
-        if (fileUrl.includes('.txt') || fileUrl.includes('.doc') || fileUrl.includes('.xlsx') || fileUrl.includes('.csv')){
+        if (fileUrl.includes('.doc') || fileUrl.includes('.xlsx') || fileUrl.includes('.csv')){
             return <span><DescriptionIcon /></span>
         } else if (fileUrl.includes('.pdf') || fileUrl.includes ('.pdf')){
             return <span><PictureAsPdfIcon /></span>
+        } else if (fileUrl.includes('.txt')){
+            return <span><ArticleIcon /></span>
         } else {
             return <span><ImageIcon /></span>
         }
