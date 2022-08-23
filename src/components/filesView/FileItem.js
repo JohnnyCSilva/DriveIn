@@ -3,6 +3,7 @@ import ImageIcon from '@mui/icons-material/Image';
 import '../../styles/FileItem.css'
 import DownloadIcon from '@mui/icons-material/Download';
 import DescriptionIcon from '@mui/icons-material/Description';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 
 import firebase from 'firebase/compat/app';
 
@@ -95,8 +96,20 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
 
 
     // if file = image then show image else show file icon
-    const fileIcon = (fileUrl.includes('.jpg') || fileUrl.includes('.png') || fileUrl.includes('.jpeg') || fileUrl.includes('.JPEG') || fileUrl.includes('.PNG') || fileUrl.includes('.JPG')) ? <ImageIcon /> : <DescriptionIcon />;
 
+    const fileIcon = () => {
+        if (fileUrl.includes('.txt') || fileUrl.includes('.doc') || fileUrl.includes('.xlsx') || fileUrl.includes('.csv')){
+            return <span><DescriptionIcon /></span>
+        } else if (fileUrl.includes('.pdf') || fileUrl.includes ('.pdf')){
+            return <span><PictureAsPdfIcon /></span>
+        } else {
+            return <span><ImageIcon /></span>
+        }
+        
+    }
+
+    //const fileIcon = (fileUrl.includes('.jpg') || fileUrl.includes('.png') || fileUrl.includes('.jpeg') || fileUrl.includes('.JPEG') || fileUrl.includes('.PNG') || fileUrl.includes('.JPG')) ? <ImageIcon /> : <DescriptionIcon />;
+       
 
     return (
         <div className='fileItem'>
@@ -104,7 +117,7 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
                 <table className='tableMain'>
                     <tbody>
                     <tr>
-                        <td className='tdName'>{fileIcon}<p>{caption}</p></td>
+                        <td className='tdName'>{fileIcon(fileUrl)}<p>{caption}</p></td>
                         <td className='tdAutor'><p>Autor</p></td>
                         <td className='tdModify'><p>{fileDate}</p></td>
                         <td className='tdSize'><p>{getReadableFileSizeString(size)}</p></td>
