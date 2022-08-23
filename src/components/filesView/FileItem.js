@@ -19,6 +19,7 @@ import firebase from 'firebase/compat/app';
 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
+    
 
     const [open, setOpen] = React.useState(false);
 
@@ -47,7 +48,7 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
 
     const getReadableFileSizeString = (fileSizeInBytes) => {
         let i = -1;
-        const byteUnits = [' kB', ' MB', ' GB', ' TB', 'PB', 'EB', 'ZB', 'YB'];
+        const byteUnits = [' kB', ' MB', ' GB', ' TB', 'PB', 'EB', 'ZB', 'YB', 'BYTEFUDER'];
         do {
             fileSizeInBytes = fileSizeInBytes / 1024;
             i++;
@@ -118,7 +119,7 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
-                <DialogTitle id="alert-dialog-title">
+                 <DialogTitle id="alert-dialog-title">
                     <div className="file_infoContainer">
                         <div className="file_info">
                             <button onClick={handleClose} className="btn_close">
