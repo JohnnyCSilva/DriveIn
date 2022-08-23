@@ -5,13 +5,43 @@ import DownloadIcon from '@mui/icons-material/Download';
 import DescriptionIcon from '@mui/icons-material/Description';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import ArticleIcon from '@mui/icons-material/Article';
+import DeleteIcon from '@mui/icons-material/Delete';
+import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
+import WestIcon from '@mui/icons-material/West';
+
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import { saveAs } from 'file-saver'
 
 import firebase from 'firebase/compat/app';
-
 
 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
+
+    const [open, setOpen] = React.useState(false);
+
+    const fileIcon = () => {
+        if (fileUrl.includes('.doc') || fileUrl.includes('.xlsx') || fileUrl.includes('.csv')){
+            return <span><DescriptionIcon  sx={{
+                verticalAlign: "middle", 
+                fontSize: 20}} /></span>
+        } else if (fileUrl.includes('.pdf') || fileUrl.includes ('.pdf')){
+            return <span><PictureAsPdfIcon  sx={{
+                verticalAlign: "middle", 
+                fontSize: 20}} /></span>
+        } else if (fileUrl.includes('.txt')){
+            return <span><ArticleIcon  sx={{
+                verticalAlign: "middle", 
+                fontSize: 20}} /></span>
+        } else {
+            return <span><ImageIcon  sx={{
+                verticalAlign: "middle", 
+                fontSize: 20}}/></span>
+        }
+        
+    }
 
     const fileDate = `${timestamp?.toDate().getDate()} ${monthNames[timestamp?.toDate().getMonth()]} ${timestamp?.toDate().getFullYear()}`
 
@@ -27,96 +57,47 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
 
     };
 
-    const openFile = () => {
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
 
-        var popup = document.createElement("dialog");
+    const handleClose = () => {
+        setOpen(false);
+    };
 
-        document.body.appendChild(popup);
+    // delete file from firestore and database
+    const deleteFileFromDb = () => {
 
-        /*const btn_download = document.createElement("download");
+        const fileRef = firebase.storage().refFromURL(fileUrl);
+        const db = firebase.firestore();
 
-        btn_download.innerHTML = "Download";
-        btn_download.setAttribute('download', `${fileUrl}.txt`);*/
-
-        const btn_delete = document.createElement("button");
-        btn_delete.innerText = "Delete File";
-        btn_delete.onclick = () => {
-
-
-            const fileRef = firebase.storage().refFromURL(fileUrl);
-            const db = firebase.firestore();
-
-            // apaga storage
-            fileRef.delete().then(function () {
-                console.log("apagado");
-            }).catch(function (error) {
-                console.log(error);
-            });
-
-            //delete file from db
-            db.collection("myFiles").doc(id).delete().then(function () {
-                console.log("apagadated");
-            }).catch(function (error) {
-                console.error(error);
-            });
-
-                popup.close();
-            }       
-
-        const image = document.createElement('img');
-
-        if (fileUrl.includes('.jpg') || fileUrl.includes('.png') || fileUrl.includes('.jpeg') || fileUrl.includes('.JPEG') || fileUrl.includes('.PNG') || fileUrl.includes('.JPG')) {
-            image.setAttribute( 'src', fileUrl );
-            image.setAttribute('alt', 'image');
-
-            popup.appendChild(image);
-            popup.appendChild(btn_delete);
-            popup.showModal();
-
-        } else {
-
-            if (window.confirm("Open File in New Tab?")) {
-                window.open(fileUrl, '_blank');
-            }  else {
-                return;
-            }
-        }        
-
-        
-        //popup.appendChild(btn_download);
-
-        // Fecha quando clicar fora da imagem
-        popup.addEventListener('click', function (e) {
-            if (e.target === popup) {
-                popup.close();
-            }
+        // apaga storage
+        fileRef.delete().then(function () {
+            console.log("apagado");
+        }).catch(function (error) {
+            console.log(error);
         });
-        // Apaga ficheiro da base de dados
         
-    }      
 
-
-    // if file = image then show image else show file icon
-
-    const fileIcon = () => {
-        if (fileUrl.includes('.doc') || fileUrl.includes('.xlsx') || fileUrl.includes('.csv')){
-            return <span><DescriptionIcon /></span>
-        } else if (fileUrl.includes('.pdf') || fileUrl.includes ('.pdf')){
-            return <span><PictureAsPdfIcon /></span>
-        } else if (fileUrl.includes('.txt')){
-            return <span><ArticleIcon /></span>
-        } else {
-            return <span><ImageIcon /></span>
-        }
+        //delete file from db
+        db.collection("myFiles").doc(id).delete().then(function () {
+            console.log("apagadated");
+        }).catch(function (error) {
+            console.error(error);
+        });
         
+        setOpen(false);
+    }    
+
+    // read fileContent if its .txt
+    
+    const downloadImage = () => {        
+        saveAs(fileUrl, caption)
     }
-
-    //const fileIcon = (fileUrl.includes('.jpg') || fileUrl.includes('.png') || fileUrl.includes('.jpeg') || fileUrl.includes('.JPEG') || fileUrl.includes('.PNG') || fileUrl.includes('.JPG')) ? <ImageIcon /> : <DescriptionIcon />;
-       
 
     return (
         <div className='fileItem'>
-            <b onClick={openFile}>
+            <b onClick={handleClickOpen}>
                 <table className='tableMain'>
                     <tbody>
                     <tr>
@@ -129,6 +110,51 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
                     </tbody>
                 </table>             
             </b>
+
+            <Dialog
+                open={open}
+                fullScreen={true}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">
+                    <div className="file_infoContainer">
+                        <div className="file_info">
+                            <button onClick={handleClose} className="btn_close">
+                                <WestIcon sx={{
+                                    verticalAlign: "middle", 
+                                    fontSize: 20,
+                                    color: '#fff'
+                                }}/> 
+                            </button>
+                            {fileIcon(fileUrl)}
+                            <h3 className="fileName">{caption}</h3>
+                        </div>
+                        <div className="file_btns">
+                            <button onClick={downloadImage} className="btn_download">
+                                <CloudDownloadIcon sx={{
+                                    verticalAlign: "middle", 
+                                    fontSize: 20,
+                                }}/> 
+                            </button>
+                            <button onClick={deleteFileFromDb} className="btn_delete">
+                                <DeleteIcon sx={{
+                                    verticalAlign: "middle", 
+                                    fontSize: 20,
+                                }}/>
+                            </button>
+                        </div>
+                    </div>
+                </DialogTitle>
+                
+                <DialogContent onClick={handleClose}>
+                    <div className="fullscreen">
+                        <img src={fileUrl} alt="" className="img_opened"></img>
+                    </div>
+                </DialogContent>
+                
+            </Dialog>           
         </div>
       )
 }

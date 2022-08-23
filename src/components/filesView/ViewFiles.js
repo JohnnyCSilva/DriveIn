@@ -21,7 +21,35 @@ const ViewFiles = () => {
         })
     }, [])
 
-    
+    console.log(files);
+
+
+
+        /*var byDate = setFiles.slice(0);
+        byDate.sort(function(a,b) {
+            return a.size - b.size;
+        });*/
+
+        //files.orderBy(size);
+
+        /*const myData = [files].concat(this.state.data)
+        .sort((a, b) => a.itemM > b.itemM ? 1 : -1)
+        .map((item, id) => 
+            <div key={id}> {id} {item.caption} {item.timestamp} {item.fileUrl} {item.size}</div>
+        );
+        console.log(myData)*/
+
+        const sortFiles = files.sort((a,b) => a.size > b.size)
+        .map((item, id) => 
+            <div key={id}> {id} {item.caption} {item.timestamp} {item.fileUrl} {item.size}</div>
+        );
+
+        console.log('SORTED ' + sortFiles);
+
+
+
+
+   
 
     const totalSize = files.reduce((acc, cur) => acc + cur.item.size, 0)
     console.log(totalSize)
