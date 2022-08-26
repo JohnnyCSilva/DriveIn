@@ -24,12 +24,12 @@ const index = () => {
 
             <SidebarItem icon={(<PieChartOutlineIcon  sx={{ fontSize: 20, color: '#752BDF', margin: '5px' }}/> )} label={'All Files'} />
 
-            <SidebarItem icon={(<MonitorIcon  sx={{ fontSize: 20, color: '#A0A5BA', margin: '5px' }}/> )} label={'Computers'} />
-            <SidebarItem icon={(<AccessTimeIcon  sx={{ fontSize: 20, color: '#A0A5BA', margin: '5px' }}/> )} label={'Recent'} />
-            <SidebarItem icon={(<StarBorderIcon  sx={{ fontSize: 20, color: '#A0A5BA', margin: '5px' }}/> )} label={'Stared'} />
-            <SidebarItem icon={(<DeleteOutlineIcon  sx={{ fontSize: 20, color: '#A0A5BA', margin: '5px' }}/> )} label={'Deleted'} />
+            <SidebarItem icon={(<MonitorIcon  sx={{ fontSize: 20, margin: '5px' }}/> )} label={'Computers'} />
+            <SidebarItem icon={(<AccessTimeIcon  sx={{ fontSize: 20, margin: '5px' }}/> )} label={'Recent'} />
+            <SidebarItem icon={(<StarBorderIcon  sx={{ fontSize: 20, margin: '5px' }}/> )} label={'Stared'} />
+            <SidebarItem icon={(<DeleteOutlineIcon  sx={{ fontSize: 20, margin: '5px' }}/> )} label={'Deleted'} />
             <hr/>
-            <SidebarItem icon={(<CloudQueueIcon  sx={{ fontSize: 20, color: '#A0A5BA', margin: '5px' }}/> )} label={'Storage'} />
+            <SidebarItem icon={(<CloudQueueIcon  sx={{ fontSize: 20, margin: '5px' }}/> )} label={'Storage'} />
             <TotalFileSize totalSize={("33")}/>
         
         </div>

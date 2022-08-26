@@ -47,10 +47,6 @@ const ViewFiles = () => {
         console.log('SORTED ' + sortFiles);
 
 
-
-
-   
-
     const totalSize = files.reduce((acc, cur) => acc + cur.item.size, 0)
     console.log(totalSize)
             

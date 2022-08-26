@@ -1,9 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');  
 
+:root{
+    --mainColor: #742BDE;
+    --mainColorHover: #5c1db7;
+    
+    --appBackground: #F5F6FA;
+    --white: #fff;
+
+    --hoverBlackTransparent: rgba(0,0,0,0.1);
+    --fileTextColor: rgba(0,0,0,.5);   
+    --fileTextColorHover: rgba(0,0,0,.7);
+
+}
+
 .App_main{
     display: flex;
-    background-color: #F5F6FA;
+    background-color: var(--appBackground);
+    transition: 0.2s ease-in-out;
 }
+
+@keyframes bouce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 
+   40% {transform: translateY(-30px);} 
+   60% {transform: translateY(-15px);} 
+}
+
 
 .main_login{
     width: 45%;
@@ -11,7 +32,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color:white;
+    background-color:var(--white);
     position: absolute;
     display: flex;
     border-radius: 10px;
@@ -19,7 +40,7 @@
 }
 
 .login_left{
-    background-color: #742BDE;
+    background-color: var(--mainColor);
     border-radius: 10px;
     box-shadow: 5px 0px 10px rgba(0,0,0,0.1);
     height: 100%;
@@ -67,7 +88,7 @@
 }
 
 .login_message>p>span{
-    color: #742BDE;
+    color: var(--mainColor);
     font-weight: bold;
 }
 
@@ -88,7 +109,7 @@
 }
 
 .login_btn>button{
-    background-color: white;
+    background-color: var(--white);
     border: none;
     width: 85px;
     height: 48px;
@@ -99,7 +120,7 @@
 }
 
 .login_btn>button:hover{
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 10px var(--hoverBlackTransparent);
 }
 
 
@@ -110,10 +131,10 @@ button>img{
 
 
 button:nth-child(1){
-    border: 1px solid rgba(0,0,0,0.1);
+    border: 1px solid transparent;
 }
 button:nth-child(1):hover{
-    border: 1px solid rgba(0,0,0,0);
+    border: 1px solid transparent;
 }
 
 button:nth-child(2){

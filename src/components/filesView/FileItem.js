@@ -19,7 +19,8 @@ import firebase from 'firebase/compat/app';
 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
-    
+
+    var fileType = React.useState(null)    
 
     const [open, setOpen] = React.useState(false);
 
@@ -48,7 +49,7 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
 
     const getReadableFileSizeString = (fileSizeInBytes) => {
         let i = -1;
-        const byteUnits = [' kB', ' MB', ' GB', ' TB', 'PB', 'EB', 'ZB', 'YB', 'BYTEFUDER'];
+        const byteUnits = [' kB', ' MB', ' GB', ' TB', 'PB', 'EB', 'ZB', 'YB'];
         do {
             fileSizeInBytes = fileSizeInBytes / 1024;
             i++;
@@ -60,6 +61,18 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
 
     const handleClickOpen = () => {
         setOpen(true);
+
+        if (fileUrl.includes('.png') || fileUrl.includes('.PNG') || fileUrl.includes('.jpg') || fileUrl.includes('.JPG') || fileUrl.includes('.jpeg') || fileUrl.includes('.JPEG') || fileUrl.includes('.webp') || fileUrl.includes('.WEBP')){
+
+            fileType = true
+            console.log(fileType)
+
+        } else if (fileUrl.includes('.txt')){    
+
+            fileType = false
+            console.log(fileType)
+        }
+        
     };
 
     const handleClose = () => {
@@ -88,9 +101,12 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
         });
         
         setOpen(false);
-    }    
+    }      
 
     // read fileContent if its .txt
+
+    // read file from firebase and show it
+                    
     
     const downloadImage = () => {        
         saveAs(fileUrl, caption)
@@ -106,7 +122,7 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
                         <td className='tdAutor'><p>Autor</p></td>
                         <td className='tdModify'><p>{fileDate}</p></td>
                         <td className='tdSize'><p>{getReadableFileSizeString(size)}</p></td>
-                        <td className='tdDownload'><DownloadIcon sx={{ fontSize: 15, color: '#A0A5BA' }}/></td>
+                        <td className='tdDownload'><DownloadIcon sx={{ fontSize: 15, color: 'var(--fileTextColor)' }}/></td>
                     </tr>    
                     </tbody>
                 </table>             
@@ -126,11 +142,9 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
                                 <WestIcon sx={{
                                     verticalAlign: "middle", 
                                     fontSize: 20,
-                                    color: '#fff'
                                 }}/> 
-                            </button>
-                            {fileIcon(fileUrl)}
-                            <h3 className="fileName">{caption}</h3>
+                            </button>                          
+                            <h3 className="fileName">{fileIcon(fileUrl)}<span>{caption}</span></h3>
                         </div>
                         <div className="file_btns">
                             <button onClick={downloadImage} className="btn_download">
@@ -151,7 +165,13 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
                 
                 <DialogContent onClick={handleClose}>
                     <div className="fullscreen">
-                        <img src={fileUrl} alt="" className="img_opened"></img>
+                        {
+                        fileType ? (
+                            <iframe src={fileUrl} title={caption} className="iframe_opened">falho</iframe>                        
+                        )  : (
+                            <img src={fileUrl} alt="" className="img_opened"></img> 
+                        )
+                        }   
                     </div>
                 </DialogContent>
                 

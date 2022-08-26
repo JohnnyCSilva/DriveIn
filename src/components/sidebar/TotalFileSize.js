@@ -53,7 +53,7 @@ const TotalFileSize = () => {
     return (
         <div className='totalSize_main'>
             <progress id="file" value={totalSize} max='10000000' className='progress_bar'/>
-            <p>{getReadableFileSizeString(totalSize)} of 10 MB used</p>
+            <p className="totalSizeP">{getReadableFileSizeString(totalSize)} of 10 MB used</p>
 
         </div>
     )

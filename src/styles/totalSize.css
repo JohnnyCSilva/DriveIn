@@ -10,3 +10,7 @@
     width: 60%;
     padding-right: 30px;
 }
+
+.totalSizeP{
+    color: var(--fileTextColor);
+}

@@ -64,10 +64,7 @@ const NewFile = () => {
         <div className='newFile_Container' onClick={onButtonClick} onMouseOut={handleUpload}>
             <input type='file' id='file' ref={inputFile} onChange={handleChange} style={{display: 'none'}}/>
             <p>Add File</p>
-            <AddIcon sx={{ fontSize: 20, color: 'white', margin: '20px' }}/>
-
-            
-            
+            <AddIcon sx={{ fontSize: 20, margin: '20px' }}/>
         </div>
         <div className='newFile_Filer'>
 
