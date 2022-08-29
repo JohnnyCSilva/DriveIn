@@ -7,12 +7,14 @@ import SearchIcon from '@mui/icons-material/Search';
 import SettingsIcon from '@mui/icons-material/Settings';
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
 
-
+import TodoList from './TodoList';
 
 const index = ({ userPhoto }) => {
 
   var rootColors = document.querySelector(':root');
   var toggle = 0;
+
+
 
   const toggleDarkMode = () => {
 
@@ -38,7 +40,7 @@ const index = ({ userPhoto }) => {
       toggle = 0;
     }
 
-}
+  }  
 
   return (
     <div className='header'>
@@ -55,9 +57,10 @@ const index = ({ userPhoto }) => {
         </div>
         <div className='header_icons'>
 
-            <span>
-                <WbSunnyOutlinedIcon sx={{ fontSize: 20, color: 'var(--fileTextColor)', margin: '5px', cursor: 'pointer' }}  onClick={toggleDarkMode}/>
-                <SettingsIcon sx={{ fontSize: 20, color: 'var(--fileTextColor)', margin: '5px' }}/>
+            <span>  
+                <TodoList/>
+                <WbSunnyOutlinedIcon sx={{ fontSize: 20, color: 'var(--fileTextColor)', margin: '10px', cursor: 'pointer' }}  onClick={toggleDarkMode}/>
+                <SettingsIcon sx={{ fontSize: 20, color: 'var(--fileTextColor)', margin: '10px' }}/>
             </span>
 
             <img src={userPhoto} alt=''/>

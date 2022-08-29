@@ -64,12 +64,12 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
 
         if (fileUrl.includes('.png') || fileUrl.includes('.PNG') || fileUrl.includes('.jpg') || fileUrl.includes('.JPG') || fileUrl.includes('.jpeg') || fileUrl.includes('.JPEG') || fileUrl.includes('.webp') || fileUrl.includes('.WEBP')){
 
-            fileType = true
+            fileType = true;
             console.log(fileType)
 
-        } else if (fileUrl.includes('.txt')){    
+        } else {    
 
-            fileType = false
+            fileType = false;
             console.log(fileType)
         }
         
@@ -164,15 +164,19 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
                 </DialogTitle>
                 
                 <DialogContent onClick={handleClose}>
-                    <div className="fullscreen">
+                    
                         {
                         fileType ? (
-                            <iframe src={fileUrl} title={caption} className="iframe_opened">falho</iframe>                        
+                            <div className="fullscreen">
+                                <img src={fileUrl} alt="" className="img_opened"></img> 
+                            </div>                        
                         )  : (
-                            <img src={fileUrl} alt="" className="img_opened"></img> 
+                            <div className="fullscreen">
+                                <iframe src={fileUrl} title={caption} className="iframe_opened">falho</iframe> 
+                            </div>
                         )
                         }   
-                    </div>
+                    
                 </DialogContent>
                 
             </Dialog>           

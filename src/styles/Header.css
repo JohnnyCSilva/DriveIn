@@ -73,6 +73,7 @@
 
 .header_icons>span{
     margin-right: 20px;
+    display: flex;
 }
 
 .header_icons>img{
