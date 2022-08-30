@@ -44,7 +44,7 @@ const ViewFiles = () => {
             <div key={id}> {id} {item.caption} {item.timestamp} {item.fileUrl} {item.size}</div>
         );
 
-        console.log('SORTED ' + sortFiles);
+        //console.log('SORTED ' + sortFiles);
 
 
     const totalSize = files.reduce((acc, cur) => acc + cur.item.size, 0)

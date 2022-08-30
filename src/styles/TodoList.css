@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap'); 
+
+
+.ListMain-Container{
+    padding: 20px 0px 20px 30px;
+    text-align: left;
+    font-family: 'Poppins';
+}
+
+.form-container{
+    display: flex;
+    margin-top: 25px;
+}   
+
+.addForm{
+    vertical-align: middle;
+    border-radius: 5px;
+    color: var(--fileTextColor);
+    padding: 15px;
+    padding-left: 20px;
+    background: var(--white);
+    display: flex;
+}
+
+.addForm>input{
+    padding-left: 10px;
+    font-size: 12px;
+    outline: none;
+    border: none;
+    font-family: 'Poppins';
+    background: var(--white);
+    color: var(--fileTextColor);
+    font-weight: 500;
+}
+
+
+.addForm>input:focus .addForm{
+    box-shadow: 0px 0px 5px var(--hoverBlackTransparent);
+}
+
+.form-container>form{
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+}
+
+.form-container>form>button{
+    border: none;
+    font-family: 'Poppins';
+    color: white;
+    background-color:  var(--mainColor);
+    vertical-align: middle;
+    text-align: center;
+    height:35px;
+    width: 35px;
+    border-radius: 3px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.form-container>form>button:hover{
+    background-color: var(--mainColorHover);
+    box-shadow: 0px 0px 5px var(--mainColor);
+}
+
+.tasks-h5{
+    padding:  0px 10px 0px 10px;
+    font-family: 'Poppins';
+    font-size: 13px;
+    color: var(--fileTextColor);
+    font-weight: 500;
+}
+
+.tasks-h5>span{
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.tasks-p{
+    padding:  10px 10px 0px 10px;
+    font-family: 'Poppins';
+    font-size: 12px;
+    color: var(--fileTextColor);
+}
+
+.todo{
+    color: var(--white);
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+    border-radius: 5px;
+    background-color: var(--white);
+    border: 2px solid var(--white);
+    padding:  10px;
+    margin: 10px 5px 5px 10px;
+    width: 70%;
+    transition: 0.2s ease-in-out;
+}
+
+.todo:hover{
+    box-shadow: 0px 0px 5px var(--hoverBlackTransparent);
+    cursor: pointer;
+}
+
+.button-complete{
+    border-radius: 50px;
+    margin-right: 15px;
+    margin-left: 5px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out ;
+}
+
+.button-delete{
+    border: none;
+    color: #f73d52;
+    cursor: pointer;
+    background-color: transparent !important;
+    visibility: hidden;
+}
+
+.button-delete:hover{
+    color: #d54b4d;
+    animation: jiggle 7s infinite;
+    animation-delay: 300ms;
+}
+
+@keyframes jiggle {
+    0%, 5.2%, 100% { margin-left: 0px;}
+    0.4%  {margin-left: -3px;}
+    1.2%  {margin-left: 3px;}
+    2%  {margin-left: -3px;}
+    2.8%  {margin-left: 3px;}
+    3.6%  {margin-left: -3px;}
+    4.4%  {margin-left: 3px;}
+  }
+
+.list{
+    color: var(--fileTextColor);
+    border: none;
+    font-family: 'Poppins';
+    background:none;
+    padding-left: 5px;
+    outline: none;
+}
+
+
+.css-1160xiw-MuiPaper-root-MuiDrawer-paper{
+    background-color: var(--appBackground) !important;
+}

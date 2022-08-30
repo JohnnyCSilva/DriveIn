@@ -11,6 +11,8 @@
     --fileTextColor: rgba(0,0,0,.5);   
     --fileTextColorHover: rgba(0,0,0,.7);
 
+    --success: #00b300;
+
 }
 
 .App_main{
