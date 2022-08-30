@@ -20,7 +20,8 @@ const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep
 
 const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
 
-    var fileType = React.useState(null)    
+    //var fileType = React.useState(null) 
+    const [filetypes, setFilesTypes] = React.useState();  
 
     const [open, setOpen] = React.useState(false);
 
@@ -63,14 +64,10 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
         setOpen(true);
 
         if (fileUrl.includes('.png') || fileUrl.includes('.PNG') || fileUrl.includes('.jpg') || fileUrl.includes('.JPG') || fileUrl.includes('.jpeg') || fileUrl.includes('.JPEG') || fileUrl.includes('.webp') || fileUrl.includes('.WEBP')){
-
-            fileType = true;
-            console.log(fileType)
+            setFilesTypes(true);
 
         } else {    
-
-            fileType = false;
-            console.log(fileType)
+            setFilesTypes(false);
         }
         
     };
@@ -99,11 +96,6 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
         
         setOpen(false);
     }      
-
-    // read fileContent if its .txt
-
-    // read file from firebase and show it
-                    
     
     const downloadImage = () => {        
         saveAs(fileUrl, caption)
@@ -163,13 +155,13 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
                 <DialogContent onClick={handleClose}>
                     
                         {
-                        fileType ? (
+                        filetypes ? (
                             <div className="fullscreen">
-                                <img src={fileUrl} alt="" className="img_opened"></img> 
+                                <img src={fileUrl} alt="" className="img_opened"></img>
                             </div>                        
                         )  : (
                             <div className="fullscreen">
-                                <iframe src={fileUrl} title={caption} className="iframe_opened">falho</iframe> 
+                                 <iframe src={fileUrl} title={caption} className="iframe_opened">falho</iframe>
                             </div>
                         )
                         }   

@@ -22,10 +22,7 @@ const TodoList = () => {
 
     const timeElapsed = Date.now();
     const today = new Date(timeElapsed);
-
-
     var date = today.toDateString()
-
 
     const [title, setTitle] = useState();
     const [state, setState] = useState(false);

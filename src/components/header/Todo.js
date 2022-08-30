@@ -11,6 +11,8 @@ export function Todo({
 }) {
     const [newTitle, setNewTitle] = React.useState(todo.title);
 
+    //const [checked, setChecked] = React.useState();
+
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -33,8 +35,8 @@ export function Todo({
                 '&.Mui-checked': {
                     color: 'var(--success)',
                 }, 
-                   
-            }}/>
+            }}
+            checked={todo.completed && true} />
 
             <input
                 style={{ textDecoration: todo.completed && "line-through", color: todo.completed && "var(--success)"}}
