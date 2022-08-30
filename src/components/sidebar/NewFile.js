@@ -16,8 +16,6 @@ const NewFile = () => {
    inputFile.current.click();
   };
 
-
-
   const handleChange = (e) =>{
     if (e.target.files[0]) {
       setFile(e.target.files[0])

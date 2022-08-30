@@ -39,10 +39,10 @@ const ViewFiles = () => {
         );
         console.log(myData)*/
 
-        const sortFiles = files.sort((a,b) => a.size > b.size)
+        /*const sortFiles = files.sort((a,b) => a.size > b.size)
         .map((item, id) => 
             <div key={id}> {id} {item.caption} {item.timestamp} {item.fileUrl} {item.size}</div>
-        );
+        );*/
 
         //console.log('SORTED ' + sortFiles);
 

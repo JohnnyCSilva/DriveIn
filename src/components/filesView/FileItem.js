@@ -79,13 +79,11 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
         setOpen(false);
     };
 
-    // delete file from firestore and database
     const deleteFileFromDb = () => {
 
         const fileRef = firebase.storage().refFromURL(fileUrl);
         const db = firebase.firestore();
 
-        // apaga storage
         fileRef.delete().then(function () {
             console.log("apagado");
         }).catch(function (error) {
@@ -93,7 +91,6 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
         });
         
 
-        //delete file from db
         db.collection("myFiles").doc(id).delete().then(function () {
             console.log("apagadated");
         }).catch(function (error) {
