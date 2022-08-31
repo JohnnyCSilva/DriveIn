@@ -82,16 +82,16 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
         const db = firebase.firestore();
 
         fileRef.delete().then(function () {
-            console.log("apagado");
+            console.log("Delete From Firestore");
         }).catch(function (error) {
-            console.log(error);
+            //console.log(error);
         });
         
 
         db.collection("myFiles").doc(id).delete().then(function () {
-            console.log("apagadated");
+            console.log("Deleted From Firebase");
         }).catch(function (error) {
-            console.error(error);
+            //console.error(error);
         });
         
         setOpen(false);

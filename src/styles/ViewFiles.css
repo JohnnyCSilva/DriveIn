@@ -2,7 +2,9 @@
 
 .fileView{
     width: 80%;
-    margin: 0 auto;
+    margin-left: 325px;
+    margin-top: 100px;
+    height: auto;
 }
 
 .tableTop{

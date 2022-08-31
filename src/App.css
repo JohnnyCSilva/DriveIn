@@ -12,7 +12,13 @@
     --fileTextColorHover: rgba(0,0,0,.7);
 
     --success: #00b300;
+    --hrcolor: rgba(0,0,0,0.1);
 
+}
+
+body{
+    background-color: var(--appBackground) !important;
+    transition: 0.2s ease-in-out;
 }
 
 .App_main{

@@ -26,6 +26,7 @@ const index = ({ userPhoto }) => {
       rootColors.style.setProperty('--hoverBlackTransparent', 'rgba(255,255,255,0.1)');
       rootColors.style.setProperty('--fileTextColor', 'rgba(255,255,255,0.5)');
       rootColors.style.setProperty('--fileTextColorHover', 'rgba(255,255,255,0.7)');
+      rootColors.style.setProperty('--hrcolor', 'rgba(255,255,255,0.2)');
 
       toggle = 1;
     } else {
@@ -36,6 +37,7 @@ const index = ({ userPhoto }) => {
       rootColors.style.setProperty('--hoverBlackTransparent', 'rgba(0,0,0,0.1)');
       rootColors.style.setProperty('--fileTextColor', 'rgba(0,0,0,0.5)');
       rootColors.style.setProperty('--fileTextColorHover', 'rgba(0,0,0,0.7)');
+      rootColors.style.setProperty('--hrcolor', 'rgba(0,0,0,0.1)');
 
       toggle = 0;
     }

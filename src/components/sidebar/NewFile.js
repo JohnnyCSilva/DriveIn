@@ -7,13 +7,14 @@ import firebase from 'firebase/compat/app';
 import { storage, db } from '../../Firebase.js';
 
 
+
 const NewFile = () => {
 
-  const [file, setFile] = useState(null)
+  var [file, setFile] = useState(null)
   const [uploading, setUploading] = useState(false)
 
   const onButtonClick = () => {
-   inputFile.current.click();
+    inputFile.current.click();
   };
 
   const handleChange = (e) =>{
@@ -21,17 +22,14 @@ const NewFile = () => {
       setFile(e.target.files[0])
     }
 
-    console.log(e.target.files[0]);
+    //console.log(e.target.files[0]);
 
-  }
-
-  const handleUpload = () => {
+    file = e.target.files[0];
     setUploading(true)
-
-    console.log(file)
+    //console.log(file)
 
       storage.ref(`files/${file.name}`).put(file).then(snapshot => {
-          console.log(snapshot)
+          //console.log(snapshot)
 
           storage.ref('files').child(file.name).getDownloadURL().then(url => {
 
@@ -47,10 +45,12 @@ const NewFile = () => {
           })
 
           storage.ref('files').child(file.name).getMetadata().then(meta => {
-              console.log(meta.size)
+              //console.log(meta.size)
           })
-
+          
     })
+
+
   }
 
   const inputFile = useRef(null)
@@ -59,7 +59,7 @@ const NewFile = () => {
 
     <div className='NewFile'>
 
-        <div className='newFile_Container' onClick={onButtonClick} onMouseOut={handleUpload}>
+        <div className='newFile_Container' onClick={onButtonClick} >
             <input type='file' id='file' ref={inputFile} onChange={handleChange} style={{display: 'none'}}/>
             <p>Add File</p>
             <AddIcon sx={{ fontSize: 20, margin: '20px' }}/>
@@ -68,9 +68,11 @@ const NewFile = () => {
 
           {
               uploading ? (
-                /*<div className='loader_before'>
-                  <div className='loader'></div>
-                </div>*/ <></>
+                 <>
+                  {/*<div className='loader_before'>
+                    <div className='loader'></div>
+              </div>*/}
+                 </>
               ) : (
                 <>
                   

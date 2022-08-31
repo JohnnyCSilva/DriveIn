@@ -7,10 +7,9 @@
 }
 
 .progress_bar{
-    width: 60%;
-    padding-right: 30px;
+    width: 70%;
+    margin-bottom: 5px;   
 }
-
 .totalSizeP{
     color: var(--fileTextColor);
 }

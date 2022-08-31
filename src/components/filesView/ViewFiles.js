@@ -13,7 +13,7 @@ const ViewFiles = () => {
 
     useEffect(() => {
         db.collection('myFiles').onSnapshot(snapshot => {
-            console.log(snapshot);
+            //console.log(snapshot);
             setFiles(snapshot.docs.map(doc => ({
                 id: doc.id,
                 item: doc.data()
@@ -21,7 +21,7 @@ const ViewFiles = () => {
         })
     }, [])
 
-    console.log(files);
+    //console.log(files);
 
 
 
@@ -45,10 +45,6 @@ const ViewFiles = () => {
         );*/
 
         //console.log('SORTED ' + sortFiles);
-
-
-    const totalSize = files.reduce((acc, cur) => acc + cur.item.size, 0)
-    console.log(totalSize)
             
 
   return (

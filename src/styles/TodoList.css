@@ -150,6 +150,17 @@
 }
 
 
+@keyframes remove{
+    from{
+        transform: scale(1.2);
+        margin-left:0px;
+    }
+    to{
+        transform: scale(0.8);
+        margin-left: 500px;
+    }
+}
+
 .css-1160xiw-MuiPaper-root-MuiDrawer-paper{
     background-color: var(--appBackground) !important;
 }

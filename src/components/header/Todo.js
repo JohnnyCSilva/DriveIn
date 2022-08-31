@@ -27,7 +27,7 @@ export function Todo({
     return (
         <div className='todo' style={{ 
             borderColor: todo.completed && "var(--success)",
-        }}>
+        }} id={todo.complete}>
 
             <Checkbox onClick={() => toggleComplete(todo)} size='small' sx={{
                 padding: 0.3,

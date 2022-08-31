@@ -1,6 +1,9 @@
 .sideBar{
+    position: fixed;
+    top: 100px;
     width: 258px;
-    height: calc(100vh - 100px);
+    height: 100vh;
+    bottom: 0;
     background-color: var(--white);
     transition: 0.2s ease-in-out;
 }
@@ -8,6 +11,8 @@
 hr{
     margin-top: 20px;
     margin-bottom: 20px;
-    border-top: 1px solid var(--hoverBlackTransparent);
+    border: none;
+    height: 1px;
+    background-color: var(--hrcolor);
     transition: 0.2s ease-in-out;
 }

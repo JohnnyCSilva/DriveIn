@@ -30,7 +30,7 @@ const index = () => {
             <SidebarItem icon={(<DeleteOutlineIcon  sx={{ fontSize: 20, margin: '5px' }}/> )} label={'Deleted'} />
             <hr/>
             <SidebarItem icon={(<CloudQueueIcon  sx={{ fontSize: 20, margin: '5px' }}/> )} label={'Storage'} />
-            <TotalFileSize totalSize={("")}/>
+            <TotalFileSize/>
         
         </div>
 
