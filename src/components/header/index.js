@@ -65,7 +65,9 @@ const index = ({ userPhoto }) => {
                 <SettingsIcon sx={{ fontSize: 20, color: 'var(--fileTextColor)', margin: '10px' }}/>
             </span>
 
-            <img src={userPhoto} alt=''/>
+            
+            <img src={localStorage.getItem('ProfilePic')} alt=''/> 
+            {console.log("-PHOTO" + userPhoto)}
         </div>
 
     </div>

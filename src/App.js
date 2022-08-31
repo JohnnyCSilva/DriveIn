@@ -22,8 +22,10 @@ function App() {
     signInWithPopup(auth, provider).then((result) =>{
       setUser(true)
 
-      var profilePic = result.user.photoURL;
-      localStorage.setItem('profilePic', profilePic)
+      var ProfilePic = result.user.photoURL;
+      localStorage.setItem('ProfilePic', ProfilePic)
+
+      console.log(ProfilePic)
 
     }).catch((error) =>{
       console.log(error);
@@ -38,7 +40,7 @@ function App() {
           {
           user ? (
             <>
-              <Header userPhoto={localStorage.getItem('profilePic')}/>
+              <Header userPhoto={localStorage.getItem('ProfilePic')}/>
               
               <div className="App_main">
                 <Sidebar/>
